@@ -1,0 +1,71 @@
+<h1>Formulario</h1>
+
+<form class="formulario" [formGroup]="member" (ngSubmit)="onsubmit()">
+     
+      <mat-form-field appearance="fill">
+        <label>Introduce su nombre</label>
+        <input matInput #input id="nombre" type="text" placeholder="Nombre (min 3 car)" formControlName="nombre">      
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <label>Introduce su apellidos</label>
+        <input matInput #input id="apellidos" type="text" placeholder="Apellidos (min 3 car)" formControlName="apellidos"/>
+      </mat-form-field>
+      <br/>
+
+
+      <mat-form-field appearance="fill">
+        <label>Introduce su DNI</label>
+        <input matInput type="text" id="DNI" placeholder="DNI (tipo 00000000X)" formControlName="dni"/>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <label>Introduce su telefono</label>
+        <input matInput type="text" id="telefono" placeholder="telefono (tipo +XXXXXXXXXXX)" formControlName="telefono"/>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill">
+        <label> Elige tu sexo </label>
+        <mat-select formControlName="sexo">
+          <mat-option value="masculino"> Masculino </mat-option>
+          <mat-option value="feminino"> Feminino </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+
+      <button type = "submit" href=""> Enviar tus datos</button>
+
+</form>
+
+<br />
+
+<table>
+    <thead>
+        <th>Posición</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Numero de socio</th>
+        <th>DNI</th>
+        <th>telefono</th>
+        <th>Sexo</th>
+        <th> Borrar </th>
+        <th> Modificar</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let socio of socios; let i = index">
+            <td>{{i}}</td>
+            <td>{{socio.nombre}}</td>
+            <td>{{socio.apellidos}}</td>
+            <td>{{socio.socioid}}</td>
+            <td>{{socio.dni}}</td>
+            <td>{{socio.telefono}}</td>
+            <td>{{socio.sexo}}</td>
+            <td> <button mat-flat-button (click)="borraritem( i )" >Borrar </button></td>
+            <td> <button mat-flat-button (click)="edititem(i,socio)" >Modificar</button></td>
+      <td>
+        </tr>
+    </tbody>
+</table>
